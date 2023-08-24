@@ -94,7 +94,7 @@ class MyEffientnet_b1_clinical(nn.Module):
 
 
 
-def model_training(num_epoch, my_model, train_loader, val_loader, ex_test_loader):
+def model_training(num_epoch, my_model, train_loader, val_loader, ex_test_loader, save_root):
     train_acc_check = np.array([])
     train_auc_check = np.array([])
     val_loss_check = np.array([])
@@ -259,7 +259,10 @@ def model_training(num_epoch, my_model, train_loader, val_loader, ex_test_loader
             test_value = test_auc_check[epoch]
     
         scheduler.step()
-    
+        
+    if val_auc_check[epoch] == val_auc_check.max():
+        torch.save(my_model.state_dict(), save_root + '/classification_checkpoint.pt')
+
         print('Epoch:[{}]/[{}]\t'
               'train auc: {:.2f} '
              'acc: {:.2f}\t '

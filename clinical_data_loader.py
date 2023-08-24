@@ -31,10 +31,6 @@ def read_data(fn, df):
     age = age.values[0]
     smoke = df[p_info]['Smoking']
     smoke = smoke.values[0]
-    
-        
-    if p_number == 38:
-        label = 1
         
     return img, label, sex, age, smoke, p_number
 

@@ -275,3 +275,4 @@ def model_training(num_epoch, my_model, train_loader, val_loader, ex_test_loader
               .format(epoch, num_epoch, train_auc_score, train_acc, 
                                           val_auc_score, val_acc, test_auc_score, test_acc, 
                       ex_test_auc_score, ex_test_acc))
+    print('Final model saved at ' + save_root + '/classification_checkpoint.pt')
